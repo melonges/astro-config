@@ -3,6 +3,8 @@
 -- Please use this mappings table to set keyboard mapping since this is the
 -- lower level configuration and more robust one. (which-key will
 -- automatically pick-up stored data by this setting.)
+--
+local utils = require "astronvim.utils"
 return {
   -- first key is the mode
   n = {
@@ -18,6 +20,7 @@ return {
       end,
       desc = "Pick to close",
     },
+    ["<leader>td"] = { function() utils.toggle_term_cmd "lazydocker" end, desc = "ToggleTerm lazydocker" },
     -- tables with the `name` key will be registered with which-key if it's installed
     -- this is useful for naming menus
     ["<leader>b"] = { name = "Buffers" },
