@@ -21,6 +21,7 @@ return {
       desc = "Pick to close",
     },
     ["<leader>td"] = { function() utils.toggle_term_cmd "lazydocker" end, desc = "ToggleTerm lazydocker" },
+    ["<leader>tt"] = { function() utils.toggle_term_cmd "btop" end, desc = "ToggleTerm btop" },
     -- tables with the `name` key will be registered with which-key if it's installed
     -- this is useful for naming menus
     ["<leader>b"] = { name = "Buffers" },
