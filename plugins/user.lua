@@ -22,23 +22,16 @@ require("presence").setup({
     end,
   },
 {
-    "zbirenbaum/copilot.lua",
-    event = { "VimEnter" },
-    config = function()
-      require("copilot").setup({
-        suggestion = {
-          auto_trigger = true,
-          keymap = {
-            -- change these if you want
-            accept = "<End>",
-            next = "<PageUp>",
-            prev = "<PageDown>",
-            dismiss = "<Del>",
-          },
-        },
-      })
-    end,
-  },
+  'Exafunction/codeium.vim',
+  event = 'BufEnter',
+  config = function ()
+    vim.keymap.set('i', '<End>', function () return vim.fn['codeium#Accept']() end, { expr = true })
+    vim.keymap.set('i', '<PageUp>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true })
+    vim.keymap.set('i', '<PageDown>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true })
+    vim.keymap.set('i', '<Del>', function() return vim.fn['codeium#Clear']() end, { expr = true })
+  end,
+  lazy = false
+},
   {"folke/todo-comments.nvim", lazy = false,
   requires = "nvim-lua/plenary.nvim",
   config = function()
